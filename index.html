@@ -24,7 +24,7 @@
                 <article>
                     <h1 class="entry-title"><a href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html">use supervisor+nginx+virtualenv to deploy a django application</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2014-05-15T17:11:59">
+        <abbr class="published" title="2014-05-15T17:51:54">
                 四 15 五月 2014
         </abbr>
 
@@ -34,7 +34,61 @@
 <p>In <a href="http://www.dongtianyi.com/category/pythondjango.html">Python,django</a>. </p>
 <p>tags: <a href="http://www.dongtianyi.com/tag/.html"></a></p>
 </footer><!-- /.post-info --><p>use supervisor+nginx+virtualenv to deploy a django application</p>
-<p>1 </p>                </article>
+<p>assume that you have virtualenv and a django application:</p>
+<p>1 gunicorn
+    1.1 install
+        in your virtualenv envirement: pip install gunicorn
+    1.2 add gunicorn to you django settings.py
+        like:
+        INSTALLED_APPS = [
+            ...,
+            "gunicorn",
+            ...
+            ]</p>
+<p>2 you can run your application by:
+    python manage.py run_gunicorn
+    here can send any parameter gunicorn accepted.
+    please reference: https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/gunicorn/</p>
+<p>3 supervisor
+    supervisor is daemon process. we use it to start/manage the command "python manage.py run_gunicorn".
+    3.1 install
+        pip install supervisor
+    3.2 generate config files
+        it’s highly recommended to simply generate config file of supervisor using command "echo_supervisord_conf".
+        echo_supervisord_conf: It is in the directory you install supervisor.</p>
+<div class="highlight"><pre>    <span class="n">echo_supervisord_conf</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
+
+    <span class="n">you</span> <span class="n">can</span> <span class="n">save</span> <span class="n">you</span> <span class="n">config</span> <span class="n">file</span> <span class="n">anywhere</span> <span class="n">you</span> <span class="n">can</span> <span class="n">read</span> <span class="n">it</span><span class="p">.</span>
+
+<span class="mf">3.3</span> <span class="n">edit</span> <span class="n">the</span> <span class="n">file</span> <span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span> <span class="n">your</span> <span class="n">just</span> <span class="n">generated</span><span class="p">.</span>
+
+    <span class="k">for</span> <span class="n">simply</span><span class="p">,</span> <span class="n">you</span> <span class="n">just</span> <span class="n">add</span> <span class="n">the</span> <span class="n">secion</span><span class="o">:</span>
+
+    <span class="p">[</span><span class="n">program</span><span class="o">:</span><span class="n">app_name</span><span class="p">]</span>
+    <span class="n">command</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your_command</span><span class="p">.</span><span class="n">sh</span>
+    <span class="n">user</span><span class="o">=</span><span class="n">user</span>
+    <span class="n">stdout_logfile</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">supervisor_stdout</span><span class="p">.</span><span class="n">log</span>
+    <span class="n">redirect_stderr</span><span class="o">=</span><span class="nb">true</span>
+    <span class="n">numprocs</span><span class="o">=</span><span class="mi">1</span>
+
+    <span class="nl">Note:</span>
+        <span class="nl">command:</span> <span class="n">the</span> <span class="n">command</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span><span class="p">,</span> <span class="n">here</span> <span class="n">we</span> <span class="n">will</span> <span class="n">use</span> <span class="n">a</span> <span class="n">sh</span> <span class="n">file</span><span class="p">.</span>
+        <span class="nl">user:</span> <span class="n">to</span> <span class="n">run</span> <span class="n">the</span> <span class="n">command</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">user</span> <span class="n">name</span> <span class="n">or</span> <span class="n">id</span>
+        <span class="nl">stdout_logfile:</span> <span class="n">log</span> <span class="n">file</span> <span class="n">path</span>
+        <span class="nl">redirect_stderr:</span> <span class="n">err</span> <span class="n">message</span> <span class="n">to</span> <span class="n">log</span> <span class="n">into</span> <span class="n">stdout_logfile</span>
+<span class="mf">3.4</span> <span class="n">after</span> <span class="n">you</span> <span class="n">run</span> <span class="s">&quot;pip install supervisor&quot;</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">find</span> <span class="n">in</span> <span class="n">the</span> <span class="n">install</span> <span class="n">directory</span> <span class="n">two</span> <span class="n">command</span><span class="o">:</span> <span class="n">supervisord</span> <span class="n">and</span> <span class="n">supervisorctl</span>
+    <span class="nl">supervisord:</span> <span class="n">start</span> <span class="n">supervisor</span> <span class="n">process</span>
+    <span class="nl">supervisorctl:</span> <span class="n">manage</span> <span class="n">supervisor</span> <span class="n">process</span>
+
+    <span class="nl">run:</span> 
+        <span class="n">supervisord</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
+        <span class="n">the</span> <span class="n">supervisor</span> <span class="n">process</span> <span class="n">will</span> <span class="n">start</span><span class="p">.</span>
+    <span class="nl">run:</span>
+        <span class="n">supervisorctl</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
+        <span class="n">you</span> <span class="n">can</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">manage</span> <span class="n">interface</span><span class="o">:</span> <span class="n">use</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">reload</span> <span class="n">etc</span><span class="p">.</span> <span class="n">to</span> <span class="n">manage</span> <span class="n">the</span> <span class="n">process</span><span class="p">.</span>
+
+    <span class="n">To</span> <span class="n">be</span> <span class="n">continued</span><span class="p">......</span>
+</pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
