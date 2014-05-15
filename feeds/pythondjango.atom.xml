@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/pythondjango.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-15T17:51:54+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-15T17:51:54+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-15:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;p&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/pythondjango.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-15T17:53:21+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-15T17:53:21+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-15:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;p&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/p&gt;
 &lt;p&gt;assume that you have virtualenv and a django application:&lt;/p&gt;
 &lt;p&gt;1 gunicorn
     1.1 install
@@ -16,13 +16,15 @@
     here can send any parameter gunicorn accepted.
     please reference: https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/gunicorn/&lt;/p&gt;
 &lt;p&gt;3 supervisor
-    supervisor is daemon process. we use it to start/manage the command "python manage.py run_gunicorn".
-    3.1 install
-        pip install supervisor
-    3.2 generate config files
-        it’s highly recommended to simply generate config file of supervisor using command "echo_supervisord_conf".
-        echo_supervisord_conf: It is in the directory you install supervisor.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;echo_supervisord_conf&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ect&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;confg&lt;/span&gt;
+    supervisor is daemon process. we use it to start/manage the command "python manage.py run_gunicorn".&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;3.1&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+    &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt;
+
+&lt;span class="mf"&gt;3.2&lt;/span&gt; &lt;span class="n"&gt;generate&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;
+    &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="err"&gt;’&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;highly&lt;/span&gt; &lt;span class="n"&gt;recommended&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;simply&lt;/span&gt; &lt;span class="n"&gt;generate&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;echo_supervisord_conf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+    &lt;span class="nl"&gt;echo_supervisord_conf:&lt;/span&gt; &lt;span class="n"&gt;It&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+    &lt;span class="n"&gt;echo_supervisord_conf&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ect&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;confg&lt;/span&gt;
 
     &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;save&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;anywhere&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
