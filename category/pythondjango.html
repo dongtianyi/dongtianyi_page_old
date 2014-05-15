@@ -24,7 +24,7 @@
                 <article>
                     <h1 class="entry-title"><a href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html">use supervisor+nginx+virtualenv to deploy a django application</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2014-05-15T17:56:21">
+        <abbr class="published" title="2014-05-15T18:00:21">
                 四 15 五月 2014
         </abbr>
 
@@ -33,30 +33,45 @@
         </address>
 <p>In <a href="http://www.dongtianyi.com/category/pythondjango.html">Python,django</a>. </p>
 <p>tags: <a href="http://www.dongtianyi.com/tag/.html"></a></p>
-</footer><!-- /.post-info --><p>use supervisor+nginx+virtualenv to deploy a django application</p>
+</footer><!-- /.post-info --><h1>use supervisor+nginx+virtualenv to deploy a django application</h1>
 <p>assume that you have virtualenv and a django application:</p>
-<p>1 gunicorn
-    1.1 install
-        in your virtualenv envirement: pip install gunicorn
-    1.2 add gunicorn to you django settings.py
-        like:
-        <code>INSTALLED_APPS = [
-            ...,
-            "gunicorn",
-            ...
-            ]</code>
-2 you can run your application by:
-    python manage.py run_gunicorn
-    here can send any parameter gunicorn accepted.
-    please reference: https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/gunicorn/</p>
-<p>3 supervisor
-    supervisor is daemon process. we use it to start/manage the command "python manage.py run_gunicorn".</p>
-<div class="highlight"><pre><span class="mf">3.1</span> <span class="n">install</span>
+<h2>1 gunicorn</h2>
+<h3>1.1 install</h3>
+<div class="highlight"><pre>    <span class="n">in</span> <span class="n">your</span> <span class="n">virtualenv</span> <span class="n">envirement</span><span class="o">:</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">gunicorn</span>
+</pre></div>
 
-    <span class="err">`</span><span class="n">pip</span> <span class="n">install</span> <span class="n">supervisor</span><span class="err">`</span>
 
-<span class="mf">3.2</span> <span class="n">generate</span> <span class="n">config</span> <span class="n">files</span>
-    <span class="n">it</span><span class="err">’</span><span class="n">s</span> <span class="n">highly</span> <span class="n">recommended</span> <span class="n">to</span> <span class="n">simply</span> <span class="n">generate</span> <span class="n">config</span> <span class="n">file</span> <span class="n">of</span> <span class="n">supervisor</span> 
+<h3>1.2 add gunicorn to you django settings.py</h3>
+<div class="highlight"><pre>    <span class="nt">like</span><span class="o">:</span>
+    <span class="err">`</span>
+    <span class="nt">INSTALLED_APPS</span> <span class="o">=</span> <span class="cp">[</span>
+        <span class="nx">...</span><span class="p">,</span>
+        <span class="s2">&quot;gunicorn&quot;</span><span class="p">,</span>
+        <span class="nx">...</span>
+        <span class="cp">]</span>
+    <span class="err">`</span>
+</pre></div>
+
+
+<h2>2 you can run your application by:</h2>
+<div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">run_gunicorn</span>
+<span class="n">here</span> <span class="n">can</span> <span class="n">send</span> <span class="n">any</span> <span class="n">parameter</span> <span class="n">gunicorn</span> <span class="n">accepted</span><span class="p">.</span>
+<span class="n">please</span> <span class="n">reference</span><span class="o">:</span> <span class="n">https</span><span class="o">:</span><span class="c1">//docs.djangoproject.com/en/dev/howto/deployment/wsgi/gunicorn/</span>
+</pre></div>
+
+
+<h2>3 supervisor</h2>
+<div class="highlight"><pre><span class="n">supervisor</span> <span class="n">is</span> <span class="n">daemon</span> <span class="n">process</span><span class="p">.</span> <span class="n">we</span> <span class="n">use</span> <span class="n">it</span> <span class="n">to</span> <span class="n">start</span><span class="o">/</span><span class="n">manage</span> <span class="n">the</span> <span class="n">command</span> <span class="s">&quot;python manage.py run_gunicorn&quot;</span><span class="p">.</span>
+</pre></div>
+
+
+<h3>3.1 install</h3>
+<div class="highlight"><pre>    <span class="err">`</span><span class="n">pip</span> <span class="n">install</span> <span class="n">supervisor</span><span class="err">`</span>
+</pre></div>
+
+
+<h3>3.2 generate config files</h3>
+<div class="highlight"><pre>    <span class="n">it</span><span class="err">’</span><span class="n">s</span> <span class="n">highly</span> <span class="n">recommended</span> <span class="n">to</span> <span class="n">simply</span> <span class="n">generate</span> <span class="n">config</span> <span class="n">file</span> <span class="n">of</span> <span class="n">supervisor</span> 
     <span class="n">using</span> <span class="n">command</span> <span class="s">&quot;echo_supervisord_conf&quot;</span><span class="p">.</span>
 
     <span class="nl">echo_supervisord_conf:</span> <span class="n">It</span> <span class="n">is</span> <span class="n">in</span> <span class="n">the</span> <span class="n">directory</span> <span class="n">you</span> <span class="n">install</span> <span class="n">supervisor</span><span class="p">.</span>
@@ -64,10 +79,11 @@
     <span class="n">echo_supervisord_conf</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
 
     <span class="n">you</span> <span class="n">can</span> <span class="n">save</span> <span class="n">you</span> <span class="n">config</span> <span class="n">file</span> <span class="n">anywhere</span> <span class="n">you</span> <span class="n">can</span> <span class="n">read</span> <span class="n">it</span><span class="p">.</span>
+</pre></div>
 
-<span class="mf">3.3</span> <span class="n">edit</span> <span class="n">the</span> <span class="n">file</span> <span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span> <span class="n">your</span> <span class="n">just</span> <span class="n">generated</span><span class="p">.</span>
 
-    <span class="k">for</span> <span class="n">simply</span><span class="p">,</span> <span class="n">you</span> <span class="n">just</span> <span class="n">add</span> <span class="n">the</span> <span class="n">secion</span><span class="o">:</span>
+<h3>3.3 edit the file supervisor.confg your just generated.</h3>
+<div class="highlight"><pre>    <span class="k">for</span> <span class="n">simply</span><span class="p">,</span> <span class="n">you</span> <span class="n">just</span> <span class="n">add</span> <span class="n">the</span> <span class="n">secion</span><span class="o">:</span>
 
     <span class="p">[</span><span class="n">program</span><span class="o">:</span><span class="n">app_name</span><span class="p">]</span>
     <span class="n">command</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your_command</span><span class="p">.</span><span class="n">sh</span>

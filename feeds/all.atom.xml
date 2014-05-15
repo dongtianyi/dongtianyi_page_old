@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-15T17:56:21+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-15T17:56:21+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-15:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;p&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-15T18:00:21+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-15T18:00:21+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-15:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;h1&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/h1&gt;
 &lt;p&gt;assume that you have virtualenv and a django application:&lt;/p&gt;
-&lt;p&gt;1 gunicorn
-    1.1 install
-        in your virtualenv envirement: pip install gunicorn
-    1.2 add gunicorn to you django settings.py
-        like:
-        &lt;code&gt;INSTALLED_APPS = [
-            ...,
-            "gunicorn",
-            ...
-            ]&lt;/code&gt;
-2 you can run your application by:
-    python manage.py run_gunicorn
-    here can send any parameter gunicorn accepted.
-    please reference: https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/gunicorn/&lt;/p&gt;
-&lt;p&gt;3 supervisor
-    supervisor is daemon process. we use it to start/manage the command "python manage.py run_gunicorn".&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;3.1&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;h2&gt;1 gunicorn&lt;/h2&gt;
+&lt;h3&gt;1.1 install&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="n"&gt;envirement&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;gunicorn&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
-    &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
 
-&lt;span class="mf"&gt;3.2&lt;/span&gt; &lt;span class="n"&gt;generate&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;
-    &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="err"&gt;’&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;highly&lt;/span&gt; &lt;span class="n"&gt;recommended&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;simply&lt;/span&gt; &lt;span class="n"&gt;generate&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt; 
+&lt;h3&gt;1.2 add gunicorn to you django settings.py&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;like&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="err"&gt;`&lt;/span&gt;
+    &lt;span class="nt"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+        &lt;span class="nx"&gt;...&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;gunicorn&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nx"&gt;...&lt;/span&gt;
+        &lt;span class="cp"&gt;]&lt;/span&gt;
+    &lt;span class="err"&gt;`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2 you can run your application by:&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;run_gunicorn&lt;/span&gt;
+&lt;span class="n"&gt;here&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;send&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;parameter&lt;/span&gt; &lt;span class="n"&gt;gunicorn&lt;/span&gt; &lt;span class="n"&gt;accepted&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;please&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//docs.djangoproject.com/en/dev/howto/deployment/wsgi/gunicorn/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3 supervisor&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;supervisor&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;daemon&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;python manage.py run_gunicorn&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3.1 install&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3.2 generate config files&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="err"&gt;’&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;highly&lt;/span&gt; &lt;span class="n"&gt;recommended&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;simply&lt;/span&gt; &lt;span class="n"&gt;generate&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt; 
     &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;echo_supervisord_conf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
     &lt;span class="nl"&gt;echo_supervisord_conf:&lt;/span&gt; &lt;span class="n"&gt;It&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
@@ -30,10 +45,11 @@
     &lt;span class="n"&gt;echo_supervisord_conf&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ect&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;confg&lt;/span&gt;
 
     &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;save&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;anywhere&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
-&lt;span class="mf"&gt;3.3&lt;/span&gt; &lt;span class="n"&gt;edit&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;confg&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;just&lt;/span&gt; &lt;span class="n"&gt;generated&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;simply&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;just&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;secion&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;h3&gt;3.3 edit the file supervisor.confg your just generated.&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;simply&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;just&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;secion&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
 
     &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;app_name&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;your_command&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
