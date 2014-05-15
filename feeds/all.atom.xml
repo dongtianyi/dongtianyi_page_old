@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-15T18:00:21+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-15T18:00:21+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-15:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;h1&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-15T18:06:46+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-15T18:06:46+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-15:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;h1&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/h1&gt;
 &lt;p&gt;assume that you have virtualenv and a django application:&lt;/p&gt;
 &lt;h2&gt;1 gunicorn&lt;/h2&gt;
 &lt;h3&gt;1.1 install&lt;/h3&gt;
@@ -9,13 +9,11 @@
 
 &lt;h3&gt;1.2 add gunicorn to you django settings.py&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;like&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-    &lt;span class="err"&gt;`&lt;/span&gt;
     &lt;span class="nt"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
         &lt;span class="nx"&gt;...&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="s2"&gt;&amp;quot;gunicorn&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="nx"&gt;...&lt;/span&gt;
         &lt;span class="cp"&gt;]&lt;/span&gt;
-    &lt;span class="err"&gt;`&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -32,7 +30,7 @@
 
 
 &lt;h3&gt;3.1 install&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -63,8 +61,11 @@
         &lt;span class="nl"&gt;user:&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;
         &lt;span class="nl"&gt;stdout_logfile:&lt;/span&gt; &lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
         &lt;span class="nl"&gt;redirect_stderr:&lt;/span&gt; &lt;span class="n"&gt;err&lt;/span&gt; &lt;span class="n"&gt;message&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="n"&gt;into&lt;/span&gt; &lt;span class="n"&gt;stdout_logfile&lt;/span&gt;
-&lt;span class="mf"&gt;3.4&lt;/span&gt; &lt;span class="n"&gt;after&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;pip install supervisor&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;supervisord&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;supervisorctl&lt;/span&gt;
-    &lt;span class="nl"&gt;supervisord:&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3.4 after you run "pip install supervisor", you can find in the install directory two command: supervisord and supervisorctl&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="nl"&gt;supervisord:&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
     &lt;span class="nl"&gt;supervisorctl:&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt; &lt;span class="n"&gt;supervisor&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
 
     &lt;span class="nl"&gt;run:&lt;/span&gt; 
@@ -73,6 +74,7 @@
     &lt;span class="nl"&gt;run:&lt;/span&gt;
         &lt;span class="n"&gt;supervisorctl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ect&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;supervisor&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;confg&lt;/span&gt;
         &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;enter&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt; &lt;span class="n"&gt;interface&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reload&lt;/span&gt; &lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
-    &lt;span class="n"&gt;To&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;continued&lt;/span&gt;&lt;span class="p"&gt;......&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term=""></category></entry><entry><title>HelloWorld</title><link href="http://www.dongtianyi.com/Hello.html" rel="alternate"></link><updated>2014-04-17T12:09:46+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-04-17:Hello.html</id><summary type="html">&lt;p&gt;Hello Pelican!&lt;/p&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
+
+&lt;h1&gt;To be continued......&lt;/h1&gt;</summary><category term=""></category></entry><entry><title>HelloWorld</title><link href="http://www.dongtianyi.com/Hello.html" rel="alternate"></link><updated>2014-04-17T12:09:46+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-04-17:Hello.html</id><summary type="html">&lt;p&gt;Hello Pelican!&lt;/p&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>

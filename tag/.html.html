@@ -24,7 +24,7 @@
                 <article>
                     <h1 class="entry-title"><a href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html">use supervisor+nginx+virtualenv to deploy a django application</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2014-05-15T18:00:21">
+        <abbr class="published" title="2014-05-15T18:06:46">
                 四 15 五月 2014
         </abbr>
 
@@ -43,13 +43,11 @@
 
 <h3>1.2 add gunicorn to you django settings.py</h3>
 <div class="highlight"><pre>    <span class="nt">like</span><span class="o">:</span>
-    <span class="err">`</span>
     <span class="nt">INSTALLED_APPS</span> <span class="o">=</span> <span class="cp">[</span>
         <span class="nx">...</span><span class="p">,</span>
         <span class="s2">&quot;gunicorn&quot;</span><span class="p">,</span>
         <span class="nx">...</span>
         <span class="cp">]</span>
-    <span class="err">`</span>
 </pre></div>
 
 
@@ -66,7 +64,7 @@
 
 
 <h3>3.1 install</h3>
-<div class="highlight"><pre>    <span class="err">`</span><span class="n">pip</span> <span class="n">install</span> <span class="n">supervisor</span><span class="err">`</span>
+<div class="highlight"><pre>    <span class="n">pip</span> <span class="n">install</span> <span class="n">supervisor</span>
 </pre></div>
 
 
@@ -97,8 +95,11 @@
         <span class="nl">user:</span> <span class="n">to</span> <span class="n">run</span> <span class="n">the</span> <span class="n">command</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">user</span> <span class="n">name</span> <span class="n">or</span> <span class="n">id</span>
         <span class="nl">stdout_logfile:</span> <span class="n">log</span> <span class="n">file</span> <span class="n">path</span>
         <span class="nl">redirect_stderr:</span> <span class="n">err</span> <span class="n">message</span> <span class="n">to</span> <span class="n">log</span> <span class="n">into</span> <span class="n">stdout_logfile</span>
-<span class="mf">3.4</span> <span class="n">after</span> <span class="n">you</span> <span class="n">run</span> <span class="s">&quot;pip install supervisor&quot;</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">find</span> <span class="n">in</span> <span class="n">the</span> <span class="n">install</span> <span class="n">directory</span> <span class="n">two</span> <span class="n">command</span><span class="o">:</span> <span class="n">supervisord</span> <span class="n">and</span> <span class="n">supervisorctl</span>
-    <span class="nl">supervisord:</span> <span class="n">start</span> <span class="n">supervisor</span> <span class="n">process</span>
+</pre></div>
+
+
+<h3>3.4 after you run "pip install supervisor", you can find in the install directory two command: supervisord and supervisorctl</h3>
+<div class="highlight"><pre>    <span class="nl">supervisord:</span> <span class="n">start</span> <span class="n">supervisor</span> <span class="n">process</span>
     <span class="nl">supervisorctl:</span> <span class="n">manage</span> <span class="n">supervisor</span> <span class="n">process</span>
 
     <span class="nl">run:</span> 
@@ -107,9 +108,10 @@
     <span class="nl">run:</span>
         <span class="n">supervisorctl</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
         <span class="n">you</span> <span class="n">can</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">manage</span> <span class="n">interface</span><span class="o">:</span> <span class="n">use</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">reload</span> <span class="n">etc</span><span class="p">.</span> <span class="n">to</span> <span class="n">manage</span> <span class="n">the</span> <span class="n">process</span><span class="p">.</span>
+</pre></div>
 
-    <span class="n">To</span> <span class="n">be</span> <span class="n">continued</span><span class="p">......</span>
-</pre></div>                </article>
+
+<h1>To be continued......</h1>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
