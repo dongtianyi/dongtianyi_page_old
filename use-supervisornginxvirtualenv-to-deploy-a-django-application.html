@@ -29,7 +29,7 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2014-05-15T17:53:21">
+        <abbr class="published" title="2014-05-15T17:56:21">
                 四 15 五月 2014
         </abbr>
 
@@ -45,22 +45,25 @@
         in your virtualenv envirement: pip install gunicorn
     1.2 add gunicorn to you django settings.py
         like:
-        INSTALLED_APPS = [
+        <code>INSTALLED_APPS = [
             ...,
             "gunicorn",
             ...
-            ]</p>
-<p>2 you can run your application by:
+            ]</code>
+2 you can run your application by:
     python manage.py run_gunicorn
     here can send any parameter gunicorn accepted.
     please reference: https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/gunicorn/</p>
 <p>3 supervisor
     supervisor is daemon process. we use it to start/manage the command "python manage.py run_gunicorn".</p>
 <div class="highlight"><pre><span class="mf">3.1</span> <span class="n">install</span>
-    <span class="n">pip</span> <span class="n">install</span> <span class="n">supervisor</span>
+
+    <span class="err">`</span><span class="n">pip</span> <span class="n">install</span> <span class="n">supervisor</span><span class="err">`</span>
 
 <span class="mf">3.2</span> <span class="n">generate</span> <span class="n">config</span> <span class="n">files</span>
-    <span class="n">it</span><span class="err">’</span><span class="n">s</span> <span class="n">highly</span> <span class="n">recommended</span> <span class="n">to</span> <span class="n">simply</span> <span class="n">generate</span> <span class="n">config</span> <span class="n">file</span> <span class="n">of</span> <span class="n">supervisor</span> <span class="n">using</span> <span class="n">command</span> <span class="s">&quot;echo_supervisord_conf&quot;</span><span class="p">.</span>
+    <span class="n">it</span><span class="err">’</span><span class="n">s</span> <span class="n">highly</span> <span class="n">recommended</span> <span class="n">to</span> <span class="n">simply</span> <span class="n">generate</span> <span class="n">config</span> <span class="n">file</span> <span class="n">of</span> <span class="n">supervisor</span> 
+    <span class="n">using</span> <span class="n">command</span> <span class="s">&quot;echo_supervisord_conf&quot;</span><span class="p">.</span>
+
     <span class="nl">echo_supervisord_conf:</span> <span class="n">It</span> <span class="n">is</span> <span class="n">in</span> <span class="n">the</span> <span class="n">directory</span> <span class="n">you</span> <span class="n">install</span> <span class="n">supervisor</span><span class="p">.</span>
 
     <span class="n">echo_supervisord_conf</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
