@@ -24,7 +24,7 @@
                 <article>
                     <h1 class="entry-title"><a href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html">use supervisor+nginx+virtualenv to deploy a django application</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2014-05-21T20:33:48">
+        <abbr class="published" title="2014-05-21T23:30:53">
                 三 21 五月 2014
         </abbr>
 
@@ -37,13 +37,14 @@
 <p>assume that you have virtualenv and a django application:</p>
 <h2>1 gunicorn</h2>
 <h3>1.1 install</h3>
-<div class="highlight"><pre>    <span class="n">in</span> <span class="n">your</span> <span class="n">virtualenv</span> <span class="n">envirement</span><span class="o">:</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">gunicorn</span>
+<p>in your virtualenv envirement: </p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">gunicorn</span>
 </pre></div>
 
 
 <h3>1.2 add gunicorn to you django settings.py</h3>
-<div class="highlight"><pre>    <span class="nt">like</span><span class="o">:</span>
-    <span class="nt">INSTALLED_APPS</span> <span class="o">=</span> <span class="cp">[</span>
+<p>like:</p>
+<div class="highlight"><pre><span class="nt">INSTALLED_APPS</span> <span class="o">=</span> <span class="cp">[</span>
         <span class="nx">...</span><span class="p">,</span>
         <span class="s2">&quot;gunicorn&quot;</span><span class="p">,</span>
         <span class="nx">...</span>
@@ -53,66 +54,201 @@
 
 <h2>2 you can run your application by:</h2>
 <div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">run_gunicorn</span>
-<span class="n">here</span> <span class="n">can</span> <span class="n">send</span> <span class="n">any</span> <span class="n">parameter</span> <span class="n">gunicorn</span> <span class="n">accepted</span><span class="p">.</span>
-<span class="n">please</span> <span class="n">reference</span><span class="o">:</span> <span class="n">https</span><span class="o">:</span><span class="c1">//docs.djangoproject.com/en/dev/howto/deployment/wsgi/gunicorn/</span>
+</pre></div>
+
+
+<p>here can send any parameter gunicorn accepted.</p>
+<div class="highlight"><pre><span class="n">please</span> <span class="n">reference</span><span class="o">:</span> <span class="n">https</span><span class="o">:</span><span class="c1">//docs.djangoproject.com/en/dev/howto/deployment/wsgi/gunicorn/</span>
 </pre></div>
 
 
 <h2>3 supervisor</h2>
-<div class="highlight"><pre><span class="n">supervisor</span> <span class="n">is</span> <span class="n">daemon</span> <span class="n">process</span><span class="p">.</span> <span class="n">we</span> <span class="n">use</span> <span class="n">it</span> <span class="n">to</span> <span class="n">start</span><span class="o">/</span><span class="n">manage</span> <span class="n">the</span> <span class="n">command</span> <span class="s">&quot;python manage.py run_gunicorn&quot;</span><span class="p">.</span>
-</pre></div>
-
-
+<p>supervisor is daemon process. we use it to start/manage the command "python manage.py run_gunicorn".</p>
 <h3>3.1 install</h3>
 <div class="highlight"><pre>    <span class="n">pip</span> <span class="n">install</span> <span class="n">supervisor</span>
 </pre></div>
 
 
 <h3>3.2 generate config files</h3>
-<div class="highlight"><pre>    <span class="n">it</span><span class="err">’</span><span class="n">s</span> <span class="n">highly</span> <span class="n">recommended</span> <span class="n">to</span> <span class="n">simply</span> <span class="n">generate</span> <span class="n">config</span> <span class="n">file</span> <span class="n">of</span> <span class="n">supervisor</span> 
-    <span class="n">using</span> <span class="n">command</span> <span class="s">&quot;echo_supervisord_conf&quot;</span><span class="p">.</span>
-
-    <span class="nl">echo_supervisord_conf:</span> <span class="n">It</span> <span class="n">is</span> <span class="n">in</span> <span class="n">the</span> <span class="n">directory</span> <span class="n">you</span> <span class="n">install</span> <span class="n">supervisor</span><span class="p">.</span>
-
-    <span class="n">echo_supervisord_conf</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
-
-    <span class="n">you</span> <span class="n">can</span> <span class="n">save</span> <span class="n">you</span> <span class="n">config</span> <span class="n">file</span> <span class="n">anywhere</span> <span class="n">you</span> <span class="n">can</span> <span class="n">read</span> <span class="n">it</span><span class="p">.</span>
+<p>it’s highly recommended to simply generate config file of supervisor 
+        using command "echo_supervisord_conf".
+echo_supervisord_conf: It is in the directory you install supervisor.</p>
+<div class="highlight"><pre><span class="n">echo_supervisord_conf</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
 </pre></div>
 
 
+<p>you can save you config file anywhere you can read it.</p>
 <h3>3.3 edit the file supervisor.confg your just generated.</h3>
-<div class="highlight"><pre>    <span class="k">for</span> <span class="n">simply</span><span class="p">,</span> <span class="n">you</span> <span class="n">just</span> <span class="n">add</span> <span class="n">the</span> <span class="n">secion</span><span class="o">:</span>
-
-    <span class="p">[</span><span class="n">program</span><span class="o">:</span><span class="n">GELunch</span><span class="p">]</span>
+<p>for simply, you just add the secion:</p>
+<div class="highlight"><pre>    <span class="p">[</span><span class="n">program</span><span class="o">:</span><span class="n">GELunch</span><span class="p">]</span>
     <span class="n">command</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your_command</span><span class="p">.</span><span class="n">sh</span>
     <span class="n">user</span><span class="o">=</span><span class="n">user</span>
     <span class="n">stdout_logfile</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">supervisor_stdout</span><span class="p">.</span><span class="n">log</span>
     <span class="n">redirect_stderr</span><span class="o">=</span><span class="nb">true</span>
     <span class="n">numprocs</span><span class="o">=</span><span class="mi">1</span>
-
-    <span class="nl">Note:</span>
-        <span class="nl">command:</span> <span class="n">the</span> <span class="n">command</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span><span class="p">,</span> <span class="n">here</span> <span class="n">we</span> <span class="n">will</span> <span class="n">use</span> <span class="n">a</span> <span class="n">sh</span> <span class="n">file</span><span class="p">.</span>
-        <span class="nl">user:</span> <span class="n">to</span> <span class="n">run</span> <span class="n">the</span> <span class="n">command</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">user</span> <span class="n">name</span> <span class="n">or</span> <span class="n">id</span>
-        <span class="nl">stdout_logfile:</span> <span class="n">log</span> <span class="n">file</span> <span class="n">path</span>
-        <span class="nl">redirect_stderr:</span> <span class="n">err</span> <span class="n">message</span> <span class="n">to</span> <span class="n">log</span> <span class="n">into</span> <span class="n">stdout_logfile</span>
 </pre></div>
 
 
-<h3>3.4 after you run "pip install supervisor", you can find in the install directory two command: supervisord and supervisorctl</h3>
-<div class="highlight"><pre>    <span class="nl">supervisord:</span> <span class="n">start</span> <span class="n">supervisor</span> <span class="n">process</span>
-    <span class="nl">supervisorctl:</span> <span class="n">manage</span> <span class="n">supervisor</span> <span class="n">process</span>
+<p>Note:
+command: the command you want to run, here we will use a sh file.<br />
+user: to run the command's user name or id<br />
+stdout_logfile: log file path<br />
+redirect_stderr: err message to log into stdout_logfile</p>
+<h3>3.4 create/edit command sh file</h3>
+<p>sh file: your_command.sh</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">&quot;Starting $NAME as `whoami`&quot;</span>
 
-    <span class="nl">run:</span> 
-        <span class="n">supervisord</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
-        <span class="n">the</span> <span class="n">supervisor</span> <span class="n">process</span> <span class="n">will</span> <span class="n">start</span><span class="p">.</span>
-    <span class="nl">run:</span>
-        <span class="n">supervisorctl</span> <span class="o">-</span><span class="n">c</span> <span class="n">supervisor</span><span class="p">.</span><span class="n">conf</span>
-        <span class="n">you</span> <span class="n">can</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">manage</span> <span class="n">interface</span><span class="o">:</span> <span class="n">use</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">reload</span> <span class="n">etc</span><span class="p">.</span> <span class="n">to</span> <span class="n">manage</span> <span class="n">the</span> <span class="n">process</span><span class="p">.</span>
+<span class="c"># Activate the virtual environment</span>
+<span class="nb">cd</span> /Users/neverstopeating/lunch/lunchge
+<span class="nb">source</span> ../env-lunch/bin/activate
+
+<span class="c"># Create the run directory if it doesn&#39;t exist</span>
+<span class="nv">RUNDIR</span><span class="o">=</span>/Users/neverstopeating/lunch/config
+<span class="nb">test</span> -d <span class="nv">$RUNDIR</span> <span class="o">||</span> mkdir -p <span class="nv">$RUNDIR</span>
+
+<span class="c"># Start your Django Unicorn</span>
+<span class="c"># Programs meant to be run under supervisor should not daemonize themselves (do not     use --daemon)</span>
+
+<span class="nb">exec</span> /Users/neverstopeating/lunch/env-lunch/bin/python /Users/neverstopeating/lunch/    lunchge/manage.py run_gunicorn --bind <span class="s2">&quot;127.0.0.1:8000&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<p>change file permission:</p>
+<div class="highlight"><pre><span class="n">chmod</span> <span class="n">u</span><span class="o">+</span><span class="n">x</span> <span class="n">your_command</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 
 
-<h3>To be continued</h3>
-<hr />
+<p>try to run ./your_command.sh, make sure this command is OK.</p>
+<h3>3.5 after running "pip install supervisor", you can find two command: supervisord and supervisorctl in the install directory.</h3>
+<p>supervisord: start supervisor process
+supervisorctl: manage supervisor process</p>
+<p>run: </p>
+<div class="highlight"><pre><span class="n">supervisord</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
+<span class="n">the</span> <span class="n">supervisor</span> <span class="n">process</span> <span class="n">will</span> <span class="n">start</span><span class="p">.</span>
+</pre></div>
+
+
+<p>run:</p>
+<div class="highlight"><pre><span class="n">supervisorctl</span> <span class="o">-</span><span class="n">c</span> <span class="n">supervisor</span><span class="p">.</span><span class="n">conf</span>
+</pre></div>
+
+
+<p>you can enter the manage interface: use start, stop, reload etc. to manage the process.</p>
+<h2>4 nginx</h2>
+<h4>4.1 install</h4>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">nginx</span>
+</pre></div>
+
+
+<h4>4.2 run nginx</h4>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">service</span> <span class="n">nginx</span> <span class="n">start</span>
+</pre></div>
+
+
+<p>After start service, in your browser input 127.0.0.1:8000, you can get "welcome to nginx". This means that your ngnix is started.<br />
+If you want to reset nginx to default:  </p>
+<div class="highlight"><pre><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">purge</span> <span class="n">nginx</span> <span class="n">nginx</span><span class="o">-</span><span class="n">common</span> <span class="n">nginx</span><span class="o">-</span><span class="n">full</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">nginx</span>
+</pre></div>
+
+
+<h4>4.3 config nginx</h4>
+<p>go to :</p>
+<div class="highlight"><pre><span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span>
+</pre></div>
+
+
+<p>There are two directory:
+sites-available and sites-enable</p>
+<p>create/edit file in the directory sites-abailable : filename (the filename is up to you)</p>
+<div class="highlight"><pre><span class="n">upstream</span> <span class="n">hello_app_server</span> <span class="p">{</span>
+<span class="cp"># fail_timeout=0 means we always retry an upstream even if it failed</span>
+<span class="cp"># to return a good HTTP response (in case the Unicorn master nukes a</span>
+<span class="cp"># single worker for timing out).</span>
+
+<span class="n">server</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">8000</span> <span class="n">fail_timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">server</span> <span class="p">{</span>
+
+<span class="n">listen</span>   <span class="mi">80</span><span class="p">;</span>
+<span class="n">server_name</span> <span class="n">yourdomain</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
+
+<span class="n">client_max_body_size</span> <span class="mi">4</span><span class="n">G</span><span class="p">;</span>
+
+<span class="n">access_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">gelunch</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">access</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
+<span class="n">error_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">gelunch</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">error</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
+
+<span class="n">location</span> <span class="o">/</span><span class="k">static</span><span class="o">/</span> <span class="p">{</span>
+    <span class="n">alias</span>   <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">gelunch</span><span class="o">/</span><span class="n">lunchge</span><span class="o">/</span><span class="n">lunchge</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">location</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span> <span class="p">{</span>
+    <span class="n">alias</span>   <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">gelunch</span><span class="o">/</span><span class="n">lunchge</span><span class="o">/</span><span class="n">lunchge</span><span class="o">/</span><span class="n">site_media</span><span class="o">/</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+    <span class="err">#</span> <span class="n">an</span> <span class="n">HTTP</span> <span class="n">header</span> <span class="n">important</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">have</span> <span class="n">its</span> <span class="n">own</span> <span class="n">Wikipedia</span> <span class="n">entry</span><span class="o">:</span>
+    <span class="err">#</span>   <span class="n">http</span><span class="o">:</span><span class="c1">//en.wikipedia.org/wiki/X-Forwarded-For</span>
+    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span> <span class="err">$</span><span class="n">proxy_add_x_forwarded_for</span><span class="p">;</span>
+
+    <span class="err">#</span> <span class="n">enable</span> <span class="n">this</span> <span class="k">if</span> <span class="n">and</span> <span class="n">only</span> <span class="k">if</span> <span class="n">you</span> <span class="n">use</span> <span class="n">HTTPS</span><span class="p">,</span> <span class="n">this</span> <span class="n">helps</span> <span class="n">Rack</span>
+    <span class="err">#</span> <span class="n">set</span> <span class="n">the</span> <span class="n">proper</span> <span class="n">protocol</span> <span class="k">for</span> <span class="n">doing</span> <span class="n">redirects</span><span class="o">:</span>
+    <span class="err">#</span> <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Proto</span> <span class="n">https</span><span class="p">;</span>
+
+    <span class="err">#</span> <span class="n">pass</span> <span class="n">the</span> <span class="n">Host</span><span class="o">:</span> <span class="n">header</span> <span class="n">from</span> <span class="n">the</span> <span class="n">client</span> <span class="n">right</span> <span class="n">along</span> <span class="n">so</span> <span class="n">redirects</span>
+    <span class="err">#</span> <span class="n">can</span> <span class="n">be</span> <span class="n">set</span> <span class="n">properly</span> <span class="n">within</span> <span class="n">the</span> <span class="n">Rack</span> <span class="n">application</span>
+    <span class="n">proxy_set_header</span> <span class="n">Host</span> <span class="err">$</span><span class="n">http_host</span><span class="p">;</span>
+
+    <span class="err">#</span> <span class="n">we</span> <span class="n">don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">want</span> <span class="n">nginx</span> <span class="n">trying</span> <span class="n">to</span> <span class="k">do</span> <span class="n">something</span> <span class="n">clever</span> <span class="n">with</span>
+    <span class="err">#</span> <span class="n">redirects</span><span class="p">,</span> <span class="n">we</span> <span class="n">set</span> <span class="n">the</span> <span class="n">Host</span><span class="o">:</span> <span class="n">header</span> <span class="n">above</span> <span class="n">already</span><span class="p">.</span>
+    <span class="n">proxy_redirect</span> <span class="n">off</span><span class="p">;</span>
+
+    <span class="err">#</span> <span class="n">set</span> <span class="s">&quot;proxy_buffering off&quot;</span> <span class="o">*</span><span class="n">only</span><span class="o">*</span> <span class="k">for</span> <span class="n">Rainbows</span><span class="o">!</span> <span class="n">when</span> <span class="n">doing</span>
+    <span class="err">#</span> <span class="n">Comet</span><span class="o">/</span><span class="kt">long</span><span class="o">-</span><span class="n">poll</span> <span class="n">stuff</span><span class="p">.</span>  <span class="n">It</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">also</span> <span class="n">safe</span> <span class="n">to</span> <span class="n">set</span> <span class="k">if</span> <span class="n">you</span><span class="err">&#39;</span><span class="n">re</span>
+    <span class="err">#</span> <span class="n">using</span> <span class="n">only</span> <span class="n">serving</span> <span class="n">fast</span> <span class="n">clients</span> <span class="n">with</span> <span class="n">Unicorn</span> <span class="o">+</span> <span class="n">nginx</span><span class="p">.</span>
+    <span class="err">#</span> <span class="n">Otherwise</span> <span class="n">you</span> <span class="n">_want_</span> <span class="n">nginx</span> <span class="n">to</span> <span class="n">buffer</span> <span class="n">responses</span> <span class="n">to</span> <span class="n">slow</span>
+    <span class="err">#</span> <span class="n">clients</span><span class="p">,</span> <span class="n">really</span><span class="p">.</span>
+    <span class="err">#</span> <span class="n">proxy_buffering</span> <span class="n">off</span><span class="p">;</span>
+
+    <span class="err">#</span> <span class="n">Try</span> <span class="n">to</span> <span class="n">serve</span> <span class="k">static</span> <span class="n">files</span> <span class="n">from</span> <span class="n">nginx</span><span class="p">,</span> <span class="n">no</span> <span class="n">point</span> <span class="n">in</span> <span class="n">making</span> <span class="n">an</span>
+    <span class="err">#</span> <span class="o">*</span><span class="n">application</span><span class="o">*</span> <span class="n">server</span> <span class="n">like</span> <span class="n">Unicorn</span><span class="o">/</span><span class="n">Rainbows</span><span class="o">!</span> <span class="n">serve</span> <span class="k">static</span> <span class="n">files</span><span class="p">.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">:</span><span class="c1">//hello_app_server;</span>
+        <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>in the directory: sites-enable, create a softlink with the same name</p>
+<div class="highlight"><pre><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">sites</span><span class="o">-</span><span class="n">enable</span><span class="o">/</span><span class="n">filename</span> <span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">filename</span>
+</pre></div>
+
+
+<h4>4.4 restart nginx</h4>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">service</span> <span class="n">nginx</span> <span class="n">restart</span>
+</pre></div>
+
+
+<p>if no error message, you service is started at 127.0.0.1:8000</p>
+<p>in you browser input yourdomain.com will enter you website.</p>
 <!--<img src="images/IMG_4733.jpg" alt="Drawing" style="width: 200px;"/>-->                </article>
 <p class="paginator">
     Page 1 / 1
