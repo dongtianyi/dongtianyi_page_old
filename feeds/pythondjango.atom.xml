@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/pythondjango.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-21T19:38:21+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-21T19:38:21+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-21:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;h1&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/pythondjango.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-21T19:44:48+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-21T19:44:48+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-21:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;h1&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/h1&gt;
 &lt;p&gt;assume that you have virtualenv and a django application:&lt;/p&gt;
 &lt;h2&gt;1 gunicorn&lt;/h2&gt;
 &lt;h3&gt;1.1 install&lt;/h3&gt;
@@ -80,4 +80,4 @@
 &lt;h3&gt;Test&lt;/h3&gt;
 &lt;h4&gt;neverstopeating....&lt;/h4&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;img alt="Alt text" src="images/IMG_4733.jpg" title="=250x" /&gt;&lt;/p&gt;</summary><category term=""></category></entry></feed>
+&lt;p&gt;&lt;img src="images/IMG_4733.jpg" alt="Drawing" style="width: 200px;"/&gt;&lt;/p&gt;</summary><category term=""></category></entry></feed>
