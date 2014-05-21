@@ -24,8 +24,8 @@
                 <article>
                     <h1 class="entry-title"><a href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html">use supervisor+nginx+virtualenv to deploy a django application</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2014-05-15T18:06:46">
-                四 15 五月 2014
+        <abbr class="published" title="2014-05-21T19:24:41">
+                三 21 五月 2014
         </abbr>
 
         <address class="vcard author">
@@ -83,7 +83,7 @@
 <h3>3.3 edit the file supervisor.confg your just generated.</h3>
 <div class="highlight"><pre>    <span class="k">for</span> <span class="n">simply</span><span class="p">,</span> <span class="n">you</span> <span class="n">just</span> <span class="n">add</span> <span class="n">the</span> <span class="n">secion</span><span class="o">:</span>
 
-    <span class="p">[</span><span class="n">program</span><span class="o">:</span><span class="n">app_name</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">program</span><span class="o">:</span><span class="n">GELunch</span><span class="p">]</span>
     <span class="n">command</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your_command</span><span class="p">.</span><span class="n">sh</span>
     <span class="n">user</span><span class="o">=</span><span class="n">user</span>
     <span class="n">stdout_logfile</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">supervisor_stdout</span><span class="p">.</span><span class="n">log</span>
@@ -106,12 +106,13 @@
         <span class="n">supervisord</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
         <span class="n">the</span> <span class="n">supervisor</span> <span class="n">process</span> <span class="n">will</span> <span class="n">start</span><span class="p">.</span>
     <span class="nl">run:</span>
-        <span class="n">supervisorctl</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">supervisor</span><span class="p">.</span><span class="n">confg</span>
+        <span class="n">supervisorctl</span> <span class="o">-</span><span class="n">c</span> <span class="n">supervisor</span><span class="p">.</span><span class="n">conf</span>
         <span class="n">you</span> <span class="n">can</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">manage</span> <span class="n">interface</span><span class="o">:</span> <span class="n">use</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">reload</span> <span class="n">etc</span><span class="p">.</span> <span class="n">to</span> <span class="n">manage</span> <span class="n">the</span> <span class="n">process</span><span class="p">.</span>
 </pre></div>
 
 
-<h1>To be continued......</h1>                </article>
+<h3>Test</h3>
+<p>neverstopeating....</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
