@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-21T19:44:48+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-21T19:44:48+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-21:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;h1&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-21T20:33:48+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-21T20:33:48+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-21:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;h1&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/h1&gt;
 &lt;p&gt;assume that you have virtualenv and a django application:&lt;/p&gt;
 &lt;h2&gt;1 gunicorn&lt;/h2&gt;
 &lt;h3&gt;1.1 install&lt;/h3&gt;
@@ -77,7 +77,6 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Test&lt;/h3&gt;
-&lt;h4&gt;neverstopeating....&lt;/h4&gt;
+&lt;h3&gt;To be continued&lt;/h3&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;img src="images/IMG_4733.jpg" alt="Drawing" style="width: 200px;"/&gt;&lt;/p&gt;</summary><category term=""></category></entry><entry><title>HelloWorld</title><link href="http://www.dongtianyi.com/Hello.html" rel="alternate"></link><updated>2014-04-17T12:09:46+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-04-17:Hello.html</id><summary type="html">&lt;p&gt;Hello Pelican!&lt;/p&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
+&lt;!--&lt;img src="images/IMG_4733.jpg" alt="Drawing" style="width: 200px;"/&gt;--&gt;</summary><category term=""></category></entry><entry><title>HelloWorld</title><link href="http://www.dongtianyi.com/Hello.html" rel="alternate"></link><updated>2014-04-17T12:09:46+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-04-17:Hello.html</id><summary type="html">&lt;p&gt;Hello Pelican!&lt;/p&gt;</summary><category term="pelican"></category><category term="publishing"></category></entry></feed>
