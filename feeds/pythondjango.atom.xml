@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/pythondjango.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-21T23:30:53+02:00</updated><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-21T23:30:53+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-21:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;h1&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/pythondjango.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-24T10:15:05+02:00</updated><entry><title>step by step to create a django project</title><link href="http://www.dongtianyi.com/step-by-step-to-create-a-django-project.html" rel="alternate"></link><updated>2014-05-24T10:15:05+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-24:step-by-step-to-create-a-django-project.html</id><summary type="html">&lt;p&gt;http://www.tylerbutler.com/2012/05/how-to-install-python-pip-and-virtualenv-on-windows-with-powershell/&lt;/p&gt;
+&lt;p&gt;Start a django project :&lt;/p&gt;
+&lt;h2&gt;1 python&lt;/h2&gt;
+&lt;p&gt;install python&lt;/p&gt;
+&lt;p&gt;windows: &lt;a href="https://www.python.org/download/releases/2.7.6/"&gt;click here&lt;/a&gt; to download python.&lt;/p&gt;
+&lt;p&gt;Linux: sudo apt-get install python&lt;/p&gt;
+&lt;h2&gt;2 download and install virtualenv&lt;/h2&gt;
+&lt;p&gt;if you have pip installed, you can run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If not, please go to &lt;a href="https://pypi.python.org/pypi/virtualenv"&gt;here&lt;/a&gt; to download virtualenv and install.&lt;/p&gt;
+&lt;h3&gt;2.1 use pip behind proxy:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;proxy&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//cn-proxy.jp.oracle.com:80 -r requirements.txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;do not forget "http://"&lt;/p&gt;
+&lt;h2&gt;3 create virtualenv&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mysite&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will create a dir env-mysite in the current directory. The dir includes all the package and python django project needed.&lt;/p&gt;
+&lt;p&gt;activate the env:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mysite&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mysite&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After activate your cmd line change to: (env-mysite).... means that your env activate.&lt;/p&gt;
+&lt;h2&gt;4 start django project:&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# install django, you can set version using  pip install Django=1.6.2&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;Django&lt;/span&gt;
+
+&lt;span class="cp"&gt;# use --template to start a project,&lt;/span&gt;
+&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;startproject&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/pinax/pinax-project-account/zipball/master mysite&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;cd mysite&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# install database&lt;/span&gt;
+&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;syncdb&lt;/span&gt;
+
+&lt;span class="cp"&gt;# runserver: default run server at: 127.0.0.1:8000&lt;/span&gt;
+&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;runserver&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;in your browser, input 127.0.0.1:8000, you can see website is running.&lt;/p&gt;</summary><category term=""></category></entry><entry><title>use supervisor+nginx+virtualenv to deploy a django application</title><link href="http://www.dongtianyi.com/use-supervisornginxvirtualenv-to-deploy-a-django-application.html" rel="alternate"></link><updated>2014-05-22T11:36:47+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-22:use-supervisornginxvirtualenv-to-deploy-a-django-application.html</id><summary type="html">&lt;h1&gt;use supervisor+nginx+virtualenv to deploy a django application&lt;/h1&gt;
 &lt;p&gt;assume that you have virtualenv and a django application:&lt;/p&gt;
 &lt;h2&gt;1 gunicorn&lt;/h2&gt;
 &lt;h3&gt;1.1 install&lt;/h3&gt;
@@ -76,7 +130,9 @@ redirect_stderr: err message to log into stdout_logfile&lt;/p&gt;
 12
 13
 14
-15&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+15
+16
+17&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Starting $NAME as `whoami`&amp;quot;&lt;/span&gt;
 
 &lt;span class="c"&gt;# Activate the virtual environment&lt;/span&gt;
@@ -90,7 +146,9 @@ redirect_stderr: err message to log into stdout_logfile&lt;/p&gt;
 &lt;span class="c"&gt;# Start your Django Unicorn&lt;/span&gt;
 &lt;span class="c"&gt;# Programs meant to be run under supervisor should not daemonize themselves (do not     use --daemon)&lt;/span&gt;
 
-&lt;span class="nb"&gt;exec&lt;/span&gt; /Users/neverstopeating/lunch/env-lunch/bin/python /Users/neverstopeating/lunch/    lunchge/manage.py run_gunicorn --bind &lt;span class="s2"&gt;&amp;quot;127.0.0.1:8000&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;exec&lt;/span&gt; /Users/neverstopeating/lunch/env-lunch/bin/python  
+/Users/neverstopeating/lunch/   lunchge/manage.py run_gunicorn  
+--bind &lt;span class="s2"&gt;&amp;quot;127.0.0.1:8000&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 

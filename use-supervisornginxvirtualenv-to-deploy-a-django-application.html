@@ -29,8 +29,8 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2014-05-21T23:30:53">
-                三 21 五月 2014
+        <abbr class="published" title="2014-05-22T11:36:47">
+                四 22 五月 2014
         </abbr>
 
         <address class="vcard author">
@@ -115,7 +115,9 @@ redirect_stderr: err message to log into stdout_logfile</p>
 12
 13
 14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;Starting $NAME as `whoami`&quot;</span>
 
 <span class="c"># Activate the virtual environment</span>
@@ -129,7 +131,9 @@ redirect_stderr: err message to log into stdout_logfile</p>
 <span class="c"># Start your Django Unicorn</span>
 <span class="c"># Programs meant to be run under supervisor should not daemonize themselves (do not     use --daemon)</span>
 
-<span class="nb">exec</span> /Users/neverstopeating/lunch/env-lunch/bin/python /Users/neverstopeating/lunch/    lunchge/manage.py run_gunicorn --bind <span class="s2">&quot;127.0.0.1:8000&quot;</span>
+<span class="nb">exec</span> /Users/neverstopeating/lunch/env-lunch/bin/python  
+/Users/neverstopeating/lunch/   lunchge/manage.py run_gunicorn  
+--bind <span class="s2">&quot;127.0.0.1:8000&quot;</span>
 </pre></div>
 </td></tr></table>
 
