@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-05-29T09:42:30+02:00</updated><entry><title>html-note</title><link href="http://www.dongtianyi.com/html-note.html" rel="alternate"></link><updated>2014-05-29T09:42:30+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-29:html-note.html</id><summary type="html">&lt;h3&gt;1 form in table:&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Fly to the future</title><link href="http://www.dongtianyi.com/" rel="alternate"></link><link href="http://www.dongtianyi.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dongtianyi.com/</id><updated>2014-06-17T13:22:29+02:00</updated><entry><title>django-timezone</title><link href="http://www.dongtianyi.com/django-timezone.html" rel="alternate"></link><updated>2014-06-17T13:22:29+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-06-17:django-timezone.html</id><summary type="html">&lt;h3&gt;to be continued&lt;/h3&gt;
+&lt;p&gt;USE_TZ = True&lt;/p&gt;</summary><category term=""></category></entry><entry><title>django-south</title><link href="http://www.dongtianyi.com/django-south.html" rel="alternate"></link><updated>2014-06-17T13:21:53+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-06-17:django-south.html</id><summary type="html">&lt;p&gt;south:
+clear south and add south
+1 clear app's dir: migrations
+2 drop table: south_migrationhistory
+3 manual modify table and model
+4 python manage.py syncdb
+5 python manage.py schemamigration lunch --initial
+6 python manage.py migrate lunch 0001 --fake&lt;/p&gt;</summary><category term=""></category></entry><entry><title>Django-model-note</title><link href="http://www.dongtianyi.com/django-model-note.html" rel="alternate"></link><updated>2014-06-14T10:30:15+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-06-14:django-model-note.html</id><summary type="html">&lt;h3&gt;1 values(*fields)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.1&lt;/span&gt; &lt;span class="n"&gt;Table1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;select&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;table1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="mf"&gt;1.2&lt;/span&gt; &lt;span class="n"&gt;Table1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;releatedTable2__name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 
+    &lt;span class="n"&gt;select&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;table2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;releatedTable2__name&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;table1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;table2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2 select_related(*fields)&lt;/h3&gt;
+&lt;p&gt;Note: select_related is limited to single-valued relationships - foreign key and one-to-one.&lt;/p&gt;
+&lt;h4&gt;2.1 Do Not use select_related&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# Hits the database.&lt;/span&gt;
+&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Entry&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="cp"&gt;# Hits the database again to get the related Blog object.&lt;/span&gt;
+&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;2.2 Using select_related&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# Hits the database.&lt;/span&gt;
+&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Entry&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select_related&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="cp"&gt;# Doesn&amp;#39;t hit the database, because e.blog has been prepopulated&lt;/span&gt;
+&lt;span class="cp"&gt;# in the previous query.&lt;/span&gt;
+&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;prefetch_related(*lookups)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;continued&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term=""></category></entry><entry><title>Django-send-email</title><link href="http://www.dongtianyi.com/django-send-email.html" rel="alternate"></link><updated>2014-06-05T13:51:50+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-06-05:django-send-email.html</id><summary type="html"></summary><category term=""></category></entry><entry><title>html-note</title><link href="http://www.dongtianyi.com/html-note.html" rel="alternate"></link><updated>2014-05-29T09:42:30+02:00</updated><author><name>Tianyi Dong</name></author><id>tag:www.dongtianyi.com,2014-05-29:html-note.html</id><summary type="html">&lt;h3&gt;1 form in table:&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;table&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;table1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width:700px; align=center&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;c1&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;

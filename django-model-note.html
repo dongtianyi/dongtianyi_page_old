@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Django-model-note</title>
+        <link rel="stylesheet" href="http://www.dongtianyi.com/theme/css/main.css" />
+        <link href="http://www.dongtianyi.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Fly to the future Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://www.dongtianyi.com/">Fly to the future </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="http://www.dongtianyi.com/category/djnago-model.html">djnago, model</a></li>
+                    <li><a href="http://www.dongtianyi.com/category/html.html">HTML</a></li>
+                    <li><a href="http://www.dongtianyi.com/category/python.html">Python</a></li>
+                    <li><a href="http://www.dongtianyi.com/category/pythondjango.html">Python,django</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://www.dongtianyi.com/django-model-note.html" rel="bookmark"
+           title="Permalink to Django-model-note">Django-model-note</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-06-14T10:30:15">
+                六 14 六月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.dongtianyi.com/author/tianyi-dong.html">Tianyi Dong</a>
+        </address>
+<p>In <a href="http://www.dongtianyi.com/category/djnago-model.html">djnago, model</a>. </p>
+<p>tags: <a href="http://www.dongtianyi.com/tag/.html"></a></p>
+</footer><!-- /.post-info -->      <h3>1 values(*fields)</h3>
+<div class="highlight"><pre><span class="mf">1.1</span> <span class="n">Table1</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">table1</span><span class="p">;</span>
+<span class="mf">1.2</span> <span class="n">Table1</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">values</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">releatedTable2__name</span><span class="p">)</span> <span class="o">=</span> 
+    <span class="n">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">table2</span><span class="p">.</span><span class="n">name</span> <span class="n">releatedTable2__name</span> <span class="n">from</span> <span class="n">table1</span><span class="p">,</span> <span class="n">table2</span><span class="p">;</span>
+</pre></div>
+
+
+<h3>2 select_related(*fields)</h3>
+<p>Note: select_related is limited to single-valued relationships - foreign key and one-to-one.</p>
+<h4>2.1 Do Not use select_related</h4>
+<div class="highlight"><pre><span class="cp"># Hits the database.</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="cp"># Hits the database again to get the related Blog object.</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">blog</span>
+</pre></div>
+
+
+<h4>2.2 Using select_related</h4>
+<div class="highlight"><pre><span class="cp"># Hits the database.</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">.</span><span class="n">objects</span><span class="p">.</span><span class="n">select_related</span><span class="p">(</span><span class="err">&#39;</span><span class="n">blog</span><span class="err">&#39;</span><span class="p">).</span><span class="n">get</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="cp"># Doesn&#39;t hit the database, because e.blog has been prepopulated</span>
+<span class="cp"># in the previous query.</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="n">blog</span>
+</pre></div>
+
+
+<h3>prefetch_related(*lookups)</h3>
+<div class="highlight"><pre><span class="n">to</span> <span class="n">be</span> <span class="n">continued</span><span class="p">...</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://www.dongtianyi.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

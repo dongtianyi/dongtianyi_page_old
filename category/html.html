@@ -15,6 +15,7 @@
         <header id="banner" class="body">
                 <h1><a href="http://www.dongtianyi.com/">Fly to the future </a></h1>
                 <nav><ul>
+                    <li><a href="http://www.dongtianyi.com/category/djnago-model.html">djnago, model</a></li>
                     <li class="active"><a href="http://www.dongtianyi.com/category/html.html">HTML</a></li>
                     <li><a href="http://www.dongtianyi.com/category/python.html">Python</a></li>
                     <li><a href="http://www.dongtianyi.com/category/pythondjango.html">Python,django</a></li>
@@ -23,7 +24,83 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://www.dongtianyi.com/html-note.html">html-note</a></h1>
+                    <h1 class="entry-title"><a href="http://www.dongtianyi.com/django-timezone.html">django-timezone</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-06-17T13:22:29">
+                二 17 六月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.dongtianyi.com/author/tianyi-dong.html">Tianyi Dong</a>
+        </address>
+<p>In <a href="http://www.dongtianyi.com/category/html.html">HTML</a>. </p>
+<p>tags: <a href="http://www.dongtianyi.com/tag/.html"></a></p>
+</footer><!-- /.post-info --><h3>to be continued</h3>
+<p>USE_TZ = True</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://www.dongtianyi.com/django-south.html" rel="bookmark"
+                           title="Permalink to django-south">django-south</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-06-17T13:21:53">
+                二 17 六月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.dongtianyi.com/author/tianyi-dong.html">Tianyi Dong</a>
+        </address>
+<p>In <a href="http://www.dongtianyi.com/category/html.html">HTML</a>. </p>
+<p>tags: <a href="http://www.dongtianyi.com/tag/.html"></a></p>
+</footer><!-- /.post-info -->                <p>south:
+clear south and add south
+1 clear app's dir: migrations
+2 drop table: south_migrationhistory
+3 manual modify table and model
+4 python manage.py syncdb
+5 python manage.py schemamigration lunch --initial
+6 python manage.py migrate lunch 0001 --fake</p>
+                <a class="readmore" href="http://www.dongtianyi.com/django-south.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://www.dongtianyi.com/django-send-email.html" rel="bookmark"
+                           title="Permalink to Django-send-email">Django-send-email</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-06-05T13:51:50">
+                四 05 六月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.dongtianyi.com/author/tianyi-dong.html">Tianyi Dong</a>
+        </address>
+<p>In <a href="http://www.dongtianyi.com/category/html.html">HTML</a>. </p>
+<p>tags: <a href="http://www.dongtianyi.com/tag/.html"></a></p>
+</footer><!-- /.post-info -->                
+                <a class="readmore" href="http://www.dongtianyi.com/django-send-email.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://www.dongtianyi.com/html-note.html" rel="bookmark"
+                           title="Permalink to html-note">html-note</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-05-29T09:42:30">
                 四 29 五月 2014
@@ -34,7 +111,7 @@
         </address>
 <p>In <a href="http://www.dongtianyi.com/category/html.html">HTML</a>. </p>
 <p>tags: <a href="http://www.dongtianyi.com/tag/.html"></a></p>
-</footer><!-- /.post-info --><h3>1 form in table:</h3>
+</footer><!-- /.post-info -->                <h3>1 form in table:</h3>
 <div class="highlight"><pre><span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">&quot;table1&quot;</span> <span class="na">style=</span><span class="s">&quot;width:700px; align=center&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;tr&gt;</span>
     <span class="nt">&lt;th&gt;</span>c1<span class="nt">&lt;/th&gt;</span>
@@ -52,33 +129,14 @@
 
 <h3>2 table in form, submit the whole table</h3>
 <div class="highlight"><pre><span class="nt">&lt;form</span>  <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">action=</span><span class="s">&quot;/xxxxx/&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;table</span> <span class="na">style=</span><span class="s">&quot;width:600px; float:left&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>c1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>c2<span class="nt">&lt;/th&gt;</span>     
-      <span class="nt">&lt;th&gt;</span>c3<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>c4<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>c5<span class="nt">&lt;/th&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;td&gt;</span>c1_value<span class="nt">&lt;/td&gt;</span>
-      <span class="nt">&lt;td&gt;</span>c1_value<span class="nt">&lt;/td&gt;</span>     
-      <span class="nt">&lt;td&gt;</span>c1_value<span class="nt">&lt;/td&gt;</span>
-      <span class="nt">&lt;td&gt;</span>c1_value<span class="nt">&lt;/td&gt;</span>
-      <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;MM&quot;</span> <span class="err">checked</span><span class="nt">/&gt;&lt;/td&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
-  <span class="nt">&lt;/table&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">style=</span><span class="s">&quot;float:left&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;submit&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</pre></div>
-
-
-<p>To be continued...</p>                </article>
+  <span class="nt">&lt;table ...</span></pre></div>
+                <a class="readmore" href="http://www.dongtianyi.com/html-note.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
